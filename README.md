@@ -6,7 +6,7 @@ Sistema de Gestion de Inventario y ventas de ropa con lector de codigo de Barras
 - .NET Framework 4.8
 - Base de Datos SQLiteV3
 # Developers:
- # Ludwing Herrera Justiniano
- # Cristian Ramirez Callejas
+ - Ludwing Herrera Justiniano
+ - Cristian Ramirez Callejas
 
-May 03 2025
+# 03 Mayo 2025
