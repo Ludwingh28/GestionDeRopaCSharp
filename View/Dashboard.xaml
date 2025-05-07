@@ -107,8 +107,82 @@
                                 Height="50"
                                 Margin="15,-15,0,40">
 
-                        <Image Source="/Utils/homeWhite.png" Height="30"/>
+                        <Image Source="/Utils/salesWhite.png" Height="35"/>
                         <TextBlock Text="Ventas"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="50"
+                                Margin="15,-15,0,40">
+
+                        <Image Source="/Utils/inventoryWhite.png" Height="35"/>
+                        <TextBlock Text="Stock Disponible"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="52"
+                                Margin="15,-15,0,40">
+
+                        <Image Source="/Utils/entryWhite.png" Height="35"/>
+                        <TextBlock Text="Registrar Ingreso de Productos"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"
+                                   TextWrapping="Wrap"
+                                   Width="170"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="52"
+                                Margin="15,-15,0,40">
+
+                        <Image Source="/Utils/managementWhite.png" Height="35"/>
+                        <TextBlock Text="Gestion de Productos"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"
+                                   TextWrapping="Wrap"
+Width="170"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="50"
+                                Margin="15,-15,0,40">
+
+                        <Image Source="/Utils/reportWhite.png" Height="35"/>
+                        <TextBlock Text="Reportes"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="50"
+                                Margin="15,-15,0,40">
+
+                        <Image Source="/Utils/supportWhite.png" Height="35"/>
+                        <TextBlock Text="Soporte"
                                    Foreground="{StaticResource titleColor2}"
                                    FontSize="20"
                                    FontFamily="Montserrat"

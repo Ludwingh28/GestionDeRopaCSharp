@@ -126,5 +126,25 @@
   <ItemGroup>
     <Resource Include="Utils\userWhite.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\salesBlack.png" />
+    <Resource Include="Utils\salesWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\managementBlack.png" />
+    <Resource Include="Utils\managementWhite.png" />
+    <Resource Include="Utils\reportBlack.png" />
+    <Resource Include="Utils\reportWhite.png" />
+    <Resource Include="Utils\supportBlack.png" />
+    <Resource Include="Utils\supportWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\entryBlack.png" />
+    <Resource Include="Utils\entryWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\inventoryBlack.png" />
+    <Resource Include="Utils\inventoryWhite.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
