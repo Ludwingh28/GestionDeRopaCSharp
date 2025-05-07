@@ -56,7 +56,7 @@
                                    VerticalAlignment="Center"
                                    Margin="10,0,0,0"/>
                         
-                        <Button x:Name="btnMinimize"
+                        <Button x:Name="btnCloseSession"
                                 BorderThickness="0"
                                 Content="&#xE748;"
                                 Foreground="White"
@@ -64,7 +64,8 @@
                                 FontFamily="Segoe MDL2 Assets"
                                 Cursor="Hand"
                                 Grid.Column="1"
-                                Margin="55,0,0,0">
+                                Margin="55,0,0,0"
+                                Click="btnCloseSession_Click">
                             <Button.Style>
                                 <Style TargetType="Button">
                                     <Setter Property="Background" Value="{StaticResource btnMinimizeColor1}"/>
@@ -87,6 +88,34 @@
                                 </ControlTemplate>
                             </Button.Template>
                         </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="50"
+                                Margin="15,15,0,40">
+                        
+                        <Image Source="/Utils/homeWhite.png" Height="30"/>
+                        <TextBlock Text="Dashboard"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"/>
+
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Height="50"
+                                Margin="15,-15,0,40">
+
+                        <Image Source="/Utils/homeWhite.png" Height="30"/>
+                        <TextBlock Text="Ventas"
+                                   Foreground="{StaticResource titleColor2}"
+                                   FontSize="20"
+                                   FontFamily="Montserrat"
+                                   FontWeight="Medium"
+                                   VerticalAlignment="Center"
+                                   Margin="10,10,0,0"/>
+
                     </StackPanel>
                 </StackPanel>
             </Border>

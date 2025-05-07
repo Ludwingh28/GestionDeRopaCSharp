@@ -106,7 +106,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Utils\logIco.png" />
+    <Resource Include="Utils\userBlack.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Utils\loginIco.png" />
@@ -114,6 +114,17 @@
   <ItemGroup>
     <Folder Include="Model\" />
     <Folder Include="ViewModel\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\homeBlack.png" />
+    <Resource Include="Utils\homeWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\padlockBlack.png" />
+    <Resource Include="Utils\padlockWhite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\userWhite.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

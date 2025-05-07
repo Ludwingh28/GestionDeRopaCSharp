@@ -31,5 +31,22 @@ namespace GestionDeRopaCSharp.view
                 DragMove();
             }
         }
+
+        private void btnCloseSession_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show(
+                "Esta a Punto de Cerrar Sesion, Desea continuar?",
+                "Cerrar Sesion",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                MainWindow mainWindow = new MainWindow();
+                mainWindow.Show();
+                this.Close();
+            }
+            // Si el resultado es No, no se hace nada.
+        }
     }
 }

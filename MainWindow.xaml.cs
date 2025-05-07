@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GestionDeRopaCSharp.view;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -42,7 +43,12 @@ namespace GestionDeRopaCSharp
 
         private void btnLogIn_Click(object sender, RoutedEventArgs e)
         {
-
+            if (txtUser.Text=="Admin" && txtPassword.Password.ToString()=="Admin") 
+            {
+                Dashboard dashboard = new Dashboard();
+                dashboard.Show();
+                this.Close();
+            }
         }
     }
 }
