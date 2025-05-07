@@ -47,8 +47,8 @@
                     <StackPanel Orientation="Horizontal"
                                 Height="35"
                                 Margin="15,15,0,40">
-                        <Image Source="/utils/loginIco.png" Height="30"/>
-                        <TextBlock Text="Dashboard"
+                        <Image Source="/Utils/handWelcome.png" Height="30"/>
+                        <TextBlock Text="Bienvenido"
                                    Foreground="{StaticResource titleColor2}"
                                    FontSize="20"
                                    FontFamily="Montserrat"
@@ -91,7 +91,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="50"
-                                Margin="15,15,0,40">
+                                Margin="15,15,0,40"
+                                Cursor="Hand">
                         
                         <Image Source="/Utils/homeWhite.png" Height="30"/>
                         <TextBlock Text="Dashboard"
@@ -105,7 +106,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="50"
-                                Margin="15,-15,0,40">
+                                Margin="15,-15,0,40"
+                                Cursor="Hand">
 
                         <Image Source="/Utils/salesWhite.png" Height="35"/>
                         <TextBlock Text="Ventas"
@@ -119,7 +121,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="50"
-                                Margin="15,-15,0,40">
+                                Margin="15,-15,0,40"
+                                Cursor="Hand">
 
                         <Image Source="/Utils/inventoryWhite.png" Height="35"/>
                         <TextBlock Text="Stock Disponible"
@@ -133,7 +136,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="52"
-                                Margin="15,-15,0,40">
+                                Margin="15,-15,0,40"
+                                Cursor="Hand">
 
                         <Image Source="/Utils/entryWhite.png" Height="35"/>
                         <TextBlock Text="Registrar Ingreso de Productos"
@@ -149,7 +153,8 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="52"
-                                Margin="15,-15,0,40">
+                                Margin="15,-15,0,40"
+                                Cursor="Hand">
 
                         <Image Source="/Utils/managementWhite.png" Height="35"/>
                         <TextBlock Text="Gestion de Productos"
@@ -165,7 +170,8 @@ Width="170"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="50"
-                                Margin="15,-15,0,40">
+                                Margin="15,-15,0,40"
+                                Cursor="Hand">
 
                         <Image Source="/Utils/reportWhite.png" Height="35"/>
                         <TextBlock Text="Reportes"
@@ -179,7 +185,8 @@ Width="170"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal"
                                 Height="50"
-                                Margin="15,-15,0,40">
+                                Margin="15,-15,0,40"
+                                Cursor="Hand">
 
                         <Image Source="/Utils/supportWhite.png" Height="35"/>
                         <TextBlock Text="Soporte"

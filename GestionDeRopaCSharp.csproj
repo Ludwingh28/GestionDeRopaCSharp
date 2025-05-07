@@ -146,5 +146,8 @@
     <Resource Include="Utils\inventoryBlack.png" />
     <Resource Include="Utils\inventoryWhite.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Utils\handWelcome.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
