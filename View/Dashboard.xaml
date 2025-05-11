@@ -90,37 +90,38 @@
                         </Button>
                     </StackPanel>
                     <!-- Botones de navegación -->
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Dashboard"
                   Tag="/Utils/homeWhite.png"
-                  Margin="0,0,0,15"/>
+                  Margin="0,0,0,15" IsChecked="True"/>
 
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Ventas"
                   Tag="/Utils/salesWhite.png"
                   Margin="0,0,0,15"/>
 
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Stock Disponible"
                   Tag="/Utils/inventoryWhite.png"
                   Margin="0,0,0,15"/>
 
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                             Content="Registrar Ingreso de Productos"
                             Tag="/Utils/entryWhite.png"
-                            Margin="0,0,0,15"/>
+                            Margin="0,0,0,15"
+                            GroupName="NavGroup"/>
 
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Gestión de Productos"
                   Tag="/Utils/managementWhite.png"
                   Margin="0,0,0,15"/>
 
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Reportes"
                   Tag="/Utils/reportWhite.png"
                   Margin="0,0,0,15"/>
 
-                    <Button Style="{StaticResource NavigationButtonStyle}"
+                    <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Soporte"
                   Tag="/Utils/supportWhite.png"
                   Margin="0,0,0,15"/>
