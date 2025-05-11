@@ -57,38 +57,4 @@
         </Setter>
     </Style>
 
-    <!-- ControlBar Button Style -->
-    <Style x:Key="ControlBarButtonStyle" TargetType="Button">
-        <Setter Property="Width" Value="35"/>
-        <Setter Property="Background" Value="{StaticResource ButtonNormalBrush}"/>
-        <Setter Property="Foreground" Value="{StaticResource ButtonForegroundBrush}"/>
-        <Setter Property="FontSize" Value="20"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border x:Name="bd"  
-                        Background="{TemplateBinding Background}"  
-                        CornerRadius="4">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock x:Name="Label"  
-                                   Text="{TemplateBinding Content}"  
-                                   TextWrapping="Wrap"  
-                                   TextAlignment="Left"  
-                                   VerticalAlignment="Center"  
-                                   MaxWidth="20"/>
-                        </StackPanel>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="bd" Property="Background" Value="{StaticResource panelActiveColor}"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter TargetName="bd" Property="Opacity" Value="0.6"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
 </ResourceDictionary>
