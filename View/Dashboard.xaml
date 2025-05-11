@@ -105,10 +105,9 @@
                   Margin="0,0,0,15"/>
 
                     <RadioButton Style="{StaticResource NavigationButtonStyle}"
-                            Content="Registrar Ingreso de Productos"
-                            Tag="/Utils/entryWhite.png"
-                            Margin="0,0,0,15"
-                            GroupName="NavGroup"/>
+                  Content="Registrar Ingreso de Productos"
+                  Tag="/Utils/entryWhite.png"
+                  Margin="0,0,0,15"/>
 
                     <RadioButton Style="{StaticResource NavigationButtonStyle}"
                   Content="Gestión de Productos"
