@@ -89,115 +89,41 @@
                             </Button.Template>
                         </Button>
                     </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="50"
-                                Margin="15,15,0,40"
-                                Cursor="Hand">
-                        
-                        <Image Source="/Utils/homeWhite.png" Height="30"/>
-                        <TextBlock Text="Dashboard"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"/>
+                    <!-- Botones de navegación -->
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                  Content="Dashboard"
+                  Tag="/Utils/homeWhite.png"
+                  Margin="0,0,0,15"/>
 
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="50"
-                                Margin="15,-15,0,40"
-                                Cursor="Hand">
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                  Content="Ventas"
+                  Tag="/Utils/salesWhite.png"
+                  Margin="0,0,0,15"/>
 
-                        <Image Source="/Utils/salesWhite.png" Height="35"/>
-                        <TextBlock Text="Ventas"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"/>
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                  Content="Stock Disponible"
+                  Tag="/Utils/inventoryWhite.png"
+                  Margin="0,0,0,15"/>
 
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="50"
-                                Margin="15,-15,0,40"
-                                Cursor="Hand">
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                            Content="Registrar Ingreso de Productos"
+                            Tag="/Utils/entryWhite.png"
+                            Margin="0,0,0,15"/>
 
-                        <Image Source="/Utils/inventoryWhite.png" Height="35"/>
-                        <TextBlock Text="Stock Disponible"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"/>
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                  Content="Gestión de Productos"
+                  Tag="/Utils/managementWhite.png"
+                  Margin="0,0,0,15"/>
 
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="52"
-                                Margin="15,-15,0,40"
-                                Cursor="Hand">
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                  Content="Reportes"
+                  Tag="/Utils/reportWhite.png"
+                  Margin="0,0,0,15"/>
 
-                        <Image Source="/Utils/entryWhite.png" Height="35"/>
-                        <TextBlock Text="Registrar Ingreso de Productos"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"
-                                   TextWrapping="Wrap"
-                                   Width="170"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="52"
-                                Margin="15,-15,0,40"
-                                Cursor="Hand">
-
-                        <Image Source="/Utils/managementWhite.png" Height="35"/>
-                        <TextBlock Text="Gestion de Productos"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"
-                                   TextWrapping="Wrap"
-Width="170"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="50"
-                                Margin="15,-15,0,40"
-                                Cursor="Hand">
-
-                        <Image Source="/Utils/reportWhite.png" Height="35"/>
-                        <TextBlock Text="Reportes"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"/>
-
-                    </StackPanel>
-                    <StackPanel Orientation="Horizontal"
-                                Height="50"
-                                Margin="15,-15,0,40"
-                                Cursor="Hand">
-
-                        <Image Source="/Utils/supportWhite.png" Height="35"/>
-                        <TextBlock Text="Soporte"
-                                   Foreground="{StaticResource titleColor2}"
-                                   FontSize="20"
-                                   FontFamily="Montserrat"
-                                   FontWeight="Medium"
-                                   VerticalAlignment="Center"
-                                   Margin="10,10,0,0"/>
-
-                    </StackPanel>
+                    <Button Style="{StaticResource NavigationButtonStyle}"
+                  Content="Soporte"
+                  Tag="/Utils/supportWhite.png"
+                  Margin="0,0,0,15"/>
                 </StackPanel>
             </Border>
 
