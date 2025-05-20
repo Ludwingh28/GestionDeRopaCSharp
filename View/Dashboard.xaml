@@ -123,6 +123,10 @@
                   Content="Soporte"
                   Tag="/Utils/supportWhite.png"
                   Margin="0,0,0,15"/>
+
+                    <Label Content="@Copyright Los +Capitos"
+                           Margin="50,100,0,0"
+                           Foreground="White"/>
                 </StackPanel>
             </Border>
 

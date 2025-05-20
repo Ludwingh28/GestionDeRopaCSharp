@@ -1,0 +1,254 @@
+-- Tabla para almacenar las categorías de productos
+CREATE TABLE Categorias (
+    id_categoria INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_categoria TEXT NOT NULL,
+    descripcion TEXT
+);
+
+-- Tabla para almacenar las marcas de productos
+CREATE TABLE Marcas (
+    id_marca INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_marca TEXT NOT NULL UNIQUE
+);
+
+-- Tabla para almacenar los colores de productos
+CREATE TABLE Colores (
+    id_color INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_color TEXT NOT NULL UNIQUE
+);
+
+-- Tabla para almacenar las tallas de productos
+CREATE TABLE Tallas (
+    id_talla INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_talla TEXT NOT NULL UNIQUE
+);
+
+-- Tabla para almacenar los productos
+CREATE TABLE Productos (
+    codigo_producto TEXT PRIMARY KEY,
+    descripcion TEXT NOT NULL,
+    id_marca INTEGER NOT NULL,
+    id_talla INTEGER NOT NULL,
+    id_color INTEGER NOT NULL,
+    precio_unitario REAL NOT NULL,  -- SQLite usa REAL en lugar de DECIMAL
+    stock_actual INTEGER NOT NULL DEFAULT 0,
+    id_categoria INTEGER,
+    FOREIGN KEY (id_marca) REFERENCES Marcas(id_marca),
+    FOREIGN KEY (id_talla) REFERENCES Tallas(id_talla),
+    FOREIGN KEY (id_color) REFERENCES Colores(id_color),
+    FOREIGN KEY (id_categoria) REFERENCES Categorias(id_categoria)
+);
+
+-- Tabla para almacenar los movimientos de inventario
+CREATE TABLE Movimientos_Inventario (
+    id_movimiento INTEGER PRIMARY KEY AUTOINCREMENT,
+    codigo_producto TEXT NOT NULL,
+    tipo_movimiento TEXT NOT NULL CHECK (tipo_movimiento IN ('ENTRADA', 'SALIDA')),
+    cantidad INTEGER NOT NULL,
+    fecha_movimiento TEXT DEFAULT (datetime('now', 'localtime')), -- SQLite usa TEXT para fechas
+    descripcion TEXT,
+    referencia TEXT, -- Referencia a venta o compra
+    FOREIGN KEY (codigo_producto) REFERENCES Productos(codigo_producto)
+);
+
+-- Tabla para almacenar los vendedores/usuarios
+CREATE TABLE Usuarios (
+    id_usuario INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_usuario TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL,
+    nombre_completo TEXT NOT NULL,
+    rol TEXT NOT NULL,
+    activo INTEGER NOT NULL DEFAULT 1  -- SQLite usa INTEGER para booleanos (0=false, 1=true)
+);
+
+-- Tabla para almacenar las ventas (cabecera)
+CREATE TABLE Ventas (
+    id_venta INTEGER PRIMARY KEY AUTOINCREMENT,
+    fecha_venta TEXT DEFAULT (datetime('now', 'localtime')),  -- SQLite usa TEXT para fechas
+    nombre_cliente TEXT,  -- Dato simple del cliente sin relación
+    ci_nit_cliente TEXT,  -- Para facturación sin necesidad de registro
+    id_usuario INTEGER NOT NULL,
+    total_venta REAL NOT NULL,  -- SQLite usa REAL en lugar de DECIMAL
+    estado TEXT NOT NULL DEFAULT 'COMPLETADA' CHECK (estado IN ('COMPLETADA', 'ANULADA')),
+    nro_ticket TEXT,  -- Se generará automáticamente
+    forma_pago TEXT NOT NULL DEFAULT 'EFECTIVO' CHECK (forma_pago IN ('EFECTIVO', 'TARJETA', 'TRANSFERENCIA')),
+    observaciones TEXT,
+    FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
+);
+
+-- Tabla para almacenar el detalle de las ventas
+CREATE TABLE Detalles_Venta (
+    id_detalle INTEGER PRIMARY KEY AUTOINCREMENT,
+    id_venta INTEGER NOT NULL,
+    codigo_producto TEXT NOT NULL,
+    cantidad INTEGER NOT NULL,
+    precio_unitario REAL NOT NULL,  -- SQLite usa REAL en lugar de DECIMAL
+    subtotal REAL NOT NULL,  -- SQLite usa REAL en lugar de DECIMAL
+    descuento REAL DEFAULT 0,  -- SQLite usa REAL en lugar de DECIMAL
+    FOREIGN KEY (id_venta) REFERENCES Ventas(id_venta),
+    FOREIGN KEY (codigo_producto) REFERENCES Productos(codigo_producto)
+);
+
+-- Tabla para guardar los datos de configuración del sistema
+CREATE TABLE Configuracion (
+    id_configuracion INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre_negocio TEXT NOT NULL,
+    direccion TEXT,
+    telefono TEXT,
+    nit TEXT,
+    mensaje_ticket TEXT,
+    logo_path TEXT,
+    ultimo_nro_ticket INTEGER NOT NULL DEFAULT 0
+);
+
+-- Índices para mejorar rendimiento
+CREATE INDEX idx_productos_marca ON Productos(id_marca);
+CREATE INDEX idx_productos_talla ON Productos(id_talla);
+CREATE INDEX idx_productos_color ON Productos(id_color);
+CREATE INDEX idx_movimientos_producto ON Movimientos_Inventario(codigo_producto);
+CREATE INDEX idx_ventas_fecha ON Ventas(fecha_venta);
+CREATE INDEX idx_detalles_venta ON Detalles_Venta(id_venta);
+CREATE INDEX idx_detalles_producto ON Detalles_Venta(codigo_producto);
+
+-- Vistas para facilitar reportes
+
+-- Vista de productos con detalles
+CREATE VIEW Vista_Productos AS
+SELECT 
+    p.codigo_producto,
+    p.descripcion,
+    m.nombre_marca AS marca,
+    t.nombre_talla AS talla,
+    c.nombre_color AS color,
+    p.precio_unitario,
+    p.stock_actual,
+    cat.nombre_categoria AS categoria
+FROM 
+    Productos p
+JOIN 
+    Marcas m ON p.id_marca = m.id_marca
+JOIN 
+    Tallas t ON p.id_talla = t.id_talla
+JOIN 
+    Colores c ON p.id_color = c.id_color
+LEFT JOIN 
+    Categorias cat ON p.id_categoria = cat.id_categoria;
+
+-- Vista de ventas con detalles
+CREATE VIEW Vista_Ventas_Detalle AS
+SELECT 
+    v.id_venta,
+    v.fecha_venta,
+    v.nro_ticket,
+    v.nombre_cliente,
+    v.ci_nit_cliente,
+    v.total_venta,
+    v.estado,
+    v.forma_pago,
+    u.nombre_completo AS vendedor,
+    dv.codigo_producto,
+    p.descripcion AS producto,
+    m.nombre_marca AS marca,
+    t.nombre_talla AS talla,
+    co.nombre_color AS color,
+    dv.cantidad,
+    dv.precio_unitario,
+    dv.subtotal,
+    dv.descuento
+FROM 
+    Ventas v
+JOIN 
+    Detalles_Venta dv ON v.id_venta = dv.id_venta
+JOIN 
+    Productos p ON dv.codigo_producto = p.codigo_producto
+JOIN 
+    Marcas m ON p.id_marca = m.id_marca
+JOIN 
+    Tallas t ON p.id_talla = t.id_talla
+JOIN 
+    Colores co ON p.id_color = co.id_color
+JOIN 
+    Usuarios u ON v.id_usuario = u.id_usuario;
+
+-- Vista de ventas agrupadas por producto (para reportes)
+CREATE VIEW Vista_Ventas_Por_Producto AS
+SELECT 
+    p.codigo_producto,
+    p.descripcion,
+    m.nombre_marca AS marca,
+    t.nombre_talla AS talla,
+    c.nombre_color AS color,
+    SUM(dv.cantidad) AS total_vendido,
+    SUM(dv.subtotal) AS total_ingresos
+FROM 
+    Detalles_Venta dv
+JOIN 
+    Productos p ON dv.codigo_producto = p.codigo_producto
+JOIN 
+    Marcas m ON p.id_marca = m.id_marca
+JOIN 
+    Tallas t ON p.id_talla = t.id_talla
+JOIN 
+    Colores c ON p.id_color = c.id_color
+JOIN 
+    Ventas v ON dv.id_venta = v.id_venta
+WHERE 
+    v.estado = 'COMPLETADA'
+GROUP BY 
+    p.codigo_producto, p.descripcion, m.nombre_marca, t.nombre_talla, c.nombre_color;
+
+-- Trigger para generar número de ticket
+CREATE TRIGGER trig_generar_nro_ticket
+AFTER INSERT ON Ventas
+BEGIN
+    UPDATE Configuracion SET ultimo_nro_ticket = ultimo_nro_ticket + 1;
+    UPDATE Ventas SET nro_ticket = 'TK-' || (SELECT ultimo_nro_ticket FROM Configuracion) WHERE id_venta = NEW.id_venta;
+END;
+
+-- Trigger para actualizar stock cuando se registra una venta
+CREATE TRIGGER trig_actualizar_stock_venta
+AFTER INSERT ON Detalles_Venta
+BEGIN
+    -- Restar del stock
+    UPDATE Productos 
+    SET stock_actual = stock_actual - NEW.cantidad 
+    WHERE codigo_producto = NEW.codigo_producto;
+    
+    -- Registrar el movimiento
+    INSERT INTO Movimientos_Inventario (codigo_producto, tipo_movimiento, cantidad, descripcion, referencia)
+    VALUES (NEW.codigo_producto, 'SALIDA', NEW.cantidad, 'Venta', 'V-' || NEW.id_venta);
+END;
+
+-- Trigger para restaurar stock cuando se anula una venta
+CREATE TRIGGER trig_restaurar_stock_anulacion
+AFTER UPDATE ON Ventas
+WHEN NEW.estado = 'ANULADA' AND OLD.estado = 'COMPLETADA'
+BEGIN
+    -- Registrar entrada por anulación
+    INSERT INTO Movimientos_Inventario 
+    SELECT 
+        NULL, -- id autoincremental
+        d.codigo_producto,
+        'ENTRADA',
+        d.cantidad,
+        datetime('now', 'localtime'),
+        'Anulación de venta',
+        'V-' || d.id_venta
+    FROM 
+        Detalles_Venta d
+    WHERE 
+        d.id_venta = NEW.id_venta;
+    
+    -- Actualizar stock
+    UPDATE Productos
+    SET stock_actual = stock_actual + (
+        SELECT cantidad 
+        FROM Detalles_Venta 
+        WHERE id_venta = NEW.id_venta AND codigo_producto = Productos.codigo_producto
+    )
+    WHERE codigo_producto IN (
+        SELECT codigo_producto 
+        FROM Detalles_Venta 
+        WHERE id_venta = NEW.id_venta
+    );
+END;
